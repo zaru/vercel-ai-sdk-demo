@@ -3,7 +3,17 @@
 import { useChat } from "ai/react";
 
 export default function Home() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    onResponse: (response) => {
+      console.log(response);
+    },
+    onFinish: () => {
+      console.log("finish");
+    },
+    body: {
+      foo: "bar",
+    },
+  });
   return (
     <div>
       <div>
